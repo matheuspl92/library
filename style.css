@@ -69,11 +69,33 @@ footer {
 
 .container {
 	background: linear-gradient(#f2f2f2, #e2e2e2);
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-template-rows: repeat(auto-fit, 200px);
+	padding: 25px;
+	gap: 25px;
+}
+
+.card {
+	background: white;
+	border-radius: 10px;
+	padding: 25px;
+	box-shadow: 0px 0px 5px #6c6c6c;
 }
 
 h2 {
 	font-weight: bold;
 	font-size: 2.75em;
+}
+
+h3 {
+	font-weight: bold;
+	font-size: 2em;
+}
+
+h4 {
+	font-style: italic;
+	font-size: 1.5em;
 }
 
 #add-book {
@@ -82,3 +104,4 @@ h2 {
 	padding: 10px;
 	border-radius: 20px;
 }
+
