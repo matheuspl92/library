@@ -12,6 +12,7 @@ function addBookToLibrary(bookName, bookAuthor, bookPages, wasBookRead) {
     newBook.wasBookRead = wasBookRead;
 
     myLibrary.push(newBook);
+    console.log("BOOK ADDED!");
 }
 
 addBookToLibrary("Dune", "F Hebert", 850, true);
@@ -21,7 +22,7 @@ addBookToLibrary("Democracia, o deus que falhou", "Hayke", 500, false);
 
 console.log(myLibrary);
 
-function createCard(book){
+function createCard(book) {
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("card");
 
@@ -45,10 +46,43 @@ function createCard(book){
 
 function showLibrary() {
     const container = document.querySelector(".container");
-    
+    while (container.firstChild) {
+        container.removeChild(container.lastChild);
+    }
+
     myLibrary.forEach(book => {
         container.appendChild(createCard(book));
     });
 }
 
 showLibrary();
+
+const addBookBtn = document.querySelector("#add-book");
+addBookBtn.addEventListener("click", () => {
+    document.getElementById("modalOne").style.display = "block";
+})
+
+let closeBtns = [...document.querySelectorAll(".close")];
+closeBtns.forEach(function (btn) {
+    btn.onclick = function () {
+        let modal = btn.closest(".modal");
+        modal.style.display = "none";
+    };
+});
+
+window.onclick = function (event) {
+    if (event.target.className === "modal") {
+        event.target.style.display = "none";
+    }
+};
+
+const confirmBookBtn = document.querySelector("#confirm-add");
+confirmBookBtn.addEventListener("click", () => {
+    document.getElementById("modalOne").style.display = "none";
+    addBookToLibrary(document.getElementById("book-name").value,
+                     document.getElementById("book-author").value,
+                     document.getElementById("book-pages").value,
+                     document.getElementById("wasBookRead").value);
+    showLibrary();
+    
+})
