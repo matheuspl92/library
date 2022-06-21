@@ -22,7 +22,7 @@ addBookToLibrary("Democracia, o deus que falhou", "Hayke", 500, false);
 
 console.log(myLibrary);
 
-function createCard(book) {
+function createCard(book, index) {
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("card");
 
@@ -32,16 +32,36 @@ function createCard(book) {
     const wasBookRead = document.createElement("p");
 
     bookName.innerHTML = book.bookName;
-    bookAuthor.innerHTML = book.bookAuthor;
-    bookPages.innerHTML = book.bookPages;
+    bookAuthor.innerHTML = `Written by ${book.bookAuthor}`;
+    bookPages.innerHTML = `${book.bookPages} pages`;
     wasBookRead.innerHTML = book.wasBookRead;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete";
+    deleteButton.dataset.index = index;
+    deleteButton.addEventListener('click', e => {
+        console.log(e.target.dataset.index);
+        myLibrary.splice(e.target.dataset.index, 1);
+        showLibrary();
+    })
 
     cardContainer.appendChild(bookName);
     cardContainer.appendChild(bookAuthor);
     cardContainer.appendChild(bookPages);
     cardContainer.appendChild(wasBookRead);
+    cardContainer.appendChild(deleteButton);
 
     return cardContainer;
+}
+
+function cleanInputs() {
+    const inputs = document.getElementsByTagName("input");
+    console.log(inputs);
+
+    for (const input of inputs) {
+        input.value = '';
+        input.checked = false;
+    }
 }
 
 function showLibrary() {
@@ -50,9 +70,13 @@ function showLibrary() {
         container.removeChild(container.lastChild);
     }
 
-    myLibrary.forEach(book => {
+    for (let i = 0; i < myLibrary.length; i++) {
+        container.appendChild(createCard(myLibrary[i], i));        
+    }
+
+   /* myLibrary.forEach(book => {
         container.appendChild(createCard(book));
-    });
+    }); */
 }
 
 showLibrary();
@@ -82,7 +106,7 @@ confirmBookBtn.addEventListener("click", () => {
     addBookToLibrary(document.getElementById("book-name").value,
                      document.getElementById("book-author").value,
                      document.getElementById("book-pages").value,
-                     document.getElementById("wasBookRead").value);
+                     document.getElementById("wasBookRead").checked);
     showLibrary();
-    
+    cleanInputs();
 })
