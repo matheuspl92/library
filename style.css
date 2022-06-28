@@ -189,3 +189,7 @@ input {
 	align-items: center;
 	font-style: italic;
 }
+
+a {
+	color: black;
+}
