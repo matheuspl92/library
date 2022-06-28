@@ -12,15 +12,12 @@ function addBookToLibrary(bookName, bookAuthor, bookPages, wasBookRead) {
     newBook.wasBookRead = wasBookRead;
 
     myLibrary.push(newBook);
-    console.log("BOOK ADDED!");
 }
 
-addBookToLibrary("Dune", "F Hebert", 850, true);
-addBookToLibrary("I robot", "I Asimov", 350, false);
-addBookToLibrary("Starship Troopers", "Heinlein", 400, true);
-addBookToLibrary("Democracia, o deus que falhou", "Hayke", 500, false);
-
-console.log(myLibrary);
+addBookToLibrary("Dune", "Frank Hebert", 850, true);
+addBookToLibrary("I, robot", "Isaac Asimov", 350, true);
+addBookToLibrary("Starship Troopers", "Robert A. Heinlein", 400, true);
+addBookToLibrary("Call of Cthulhu", "Howard P. Lovecraft", 500, false);
 
 function createCard(book, index) {
     const cardContainer = document.createElement("div");
@@ -42,7 +39,6 @@ function createCard(book, index) {
     deleteButton.className = "delete";
     deleteButton.dataset.index = index;
     deleteButton.addEventListener('click', e => {
-        console.log(e.target.dataset.index);
         myLibrary.splice(e.target.dataset.index, 1);
         showLibrary();
     })
@@ -53,7 +49,6 @@ function createCard(book, index) {
     readCheckbox.dataset.index = index;
     readCheckbox.addEventListener("change", e => {
         myLibrary[e.target.dataset.index].wasBookRead = e.target.checked;
-        console.log(myLibrary);
     })
 
     bookReadDiv.appendChild(bookReadText);
@@ -85,9 +80,6 @@ function showLibrary() {
         container.appendChild(createCard(myLibrary[i], i));        
     }
 
-   /* myLibrary.forEach(book => {
-        container.appendChild(createCard(book));
-    }); */
 }
 
 showLibrary();
