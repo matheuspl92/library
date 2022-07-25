@@ -1,16 +1,16 @@
 let myLibrary = [];
 
-function Book() {
-
+class Book {
+    constructor(name, author, pages, wasRead) {
+        this.bookName = name;
+        this.bookAuthor = author;
+        this.bookPages = pages;
+        this.wasBookRead = wasRead;
+    }
 }
 
 function addBookToLibrary(bookName, bookAuthor, bookPages, wasBookRead) {
-    const newBook = new Book();
-    newBook.bookName = bookName;
-    newBook.bookAuthor = bookAuthor;
-    newBook.bookPages = bookPages;
-    newBook.wasBookRead = wasBookRead;
-
+    const newBook = new Book(bookName, bookAuthor, bookPages, wasBookRead);
     myLibrary.push(newBook);
 }
 
