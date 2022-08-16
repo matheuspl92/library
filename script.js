@@ -103,18 +103,6 @@ window.onclick = function (event) {
     }
 };
 
-/*const confirmBookBtn = document.querySelector("#confirm-add");
-confirmBookBtn.addEventListener("click", () => {
-    addBookToLibrary(document.getElementById("book-name").value,
-                     document.getElementById("book-author").value,
-                     document.getElementById("book-pages").value,
-                     document.getElementById("wasBookRead").checked);
-
-    document.getElementById("modalOne").style.display = "none";
-    showLibrary();
-    cleanInputs();
-})*/
-
 const bookForm = document.querySelector(".book-form");
 bookForm.addEventListener("submit", () => {
     addBookToLibrary(document.getElementById("book-name").value,
