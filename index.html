@@ -16,20 +16,20 @@
     <div class="container"></div>
     <div id="modalOne" class="modal">
         <div class="modal-content">
-          <div class="book-form">
+          <form class="book-form" onsubmit="return false">
             <div class="modal-header">
               <a class="close">&times;</a>
               <h3>Book information</h2>
             </div>
-            <input id="book-name" type="text" name="bookName" placeholder="Book title"/>
-            <input id="book-author" type="text" name="bookAuthor" placeholder="Book author"/>
-            <input id="book-pages" type="number" name="bookPages" placeholder="Number of pages"/>
+            <input id="book-name" type="text" name="bookName" placeholder="Book title" required/>
+            <input id="book-author" type="text" name="bookAuthor" placeholder="Book author" required/>
+            <input id="book-pages" type="number" name="bookPages" placeholder="Number of pages" required/>
             <div class="add-checkbox">
               <label for="wasBookRead">Have you read the book?</label>
               <input id="wasBookRead" type="checkbox" name="wasBookRead"/>
             </div>
-            <button id="confirm-add">Add</button>
-          </div>
+            <button type="submit" id="confirm-add">Add</button>
+          </form>
         </div>
       </div>
     <footer>

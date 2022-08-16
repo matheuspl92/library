@@ -70,7 +70,7 @@ footer {
 .container {
 	background: linear-gradient(#f2f2f2, #e2e2e2);
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(300px, 600px));
 	grid-template-rows: repeat(auto-fit, 250px);
 	padding: 25px;
 	gap: 25px;
